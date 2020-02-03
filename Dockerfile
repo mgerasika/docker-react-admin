@@ -19,4 +19,4 @@ RUN npm run build
 FROM nginx:latest
 COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
 CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'
-COPY --from=builder /app/build /var/www/build
+COPY --from=builder /app/build /var/www/dist
